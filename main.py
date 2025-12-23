@@ -22,7 +22,7 @@ app.add_middleware(
 
 app.include_router(router)
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 async def root():
     """Root endpoint"""
     return {
@@ -31,7 +31,7 @@ async def root():
         "status": "running"
     }
 
-@app.get("/health")
+@app.api_route("/health", methods=["GET", "HEAD"])
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy"}
