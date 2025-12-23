@@ -38,10 +38,12 @@ async def health_check():
 
 if __name__ == "__main__":
     import uvicorn
-    port = 8000
+    port = int(os.getenv("PORT", "8000"))
+    debug_mode = os.getenv("DEBUG", "False").lower() == "true"
+
     uvicorn.run(
         "main:app",
-        host="0.0.0.0",
+        host=os.getenv("HOST", "0.0.0.0"),
         port=port,
-        reload=os.getenv("DEBUG", "True").lower() == "true"
+        reload=debug_mode  # Only reload in development
     )
