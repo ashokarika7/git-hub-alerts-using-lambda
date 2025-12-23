@@ -31,5 +31,5 @@ EXPOSE 8000
 # Add user local bin to PATH
 ENV PATH="/home/app/.local/bin:$PATH"
 
-# Run the FastAPI application with uvicorn (remove --reload for production)
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+# Run the FastAPI application with uvicorn
+CMD ["/home/app/.local/bin/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
